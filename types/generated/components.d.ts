@@ -1,5 +1,32 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface SharedButton extends Struct.ComponentSchema {
+  collectionName: 'components_shared_buttons';
+  info: {
+    displayName: 'Button';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    link: Schema.Attribute.String;
+    variant: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'outline', 'plain']
+    >;
+  };
+}
+
+export interface SharedHomeStage extends Struct.ComponentSchema {
+  collectionName: 'components_shared_home_stages';
+  info: {
+    displayName: 'HomeStage';
+  };
+  attributes: {
+    buttons: Schema.Attribute.Component<'shared.button', true>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    text: Schema.Attribute.Blocks;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -62,14 +89,29 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSubHeaderEntry extends Struct.ComponentSchema {
+  collectionName: 'components_shared_sub_header_entries';
+  info: {
+    displayName: 'subHeaderEntry';
+  };
+  attributes: {
+    description: Schema.Attribute.String;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    link: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'shared.button': SharedButton;
+      'shared.home-stage': SharedHomeStage;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'shared.sub-header-entry': SharedSubHeaderEntry;
     }
   }
 }
