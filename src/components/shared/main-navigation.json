@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_main_navigations",
+  "info": {
+    "displayName": "MainNavigation"
+  },
+  "options": {},
+  "attributes": {
+    "navigationEntries": {
+      "type": "component",
+      "component": "shared.header-entry",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

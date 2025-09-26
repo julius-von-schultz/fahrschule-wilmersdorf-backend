@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_header_entries",
+  "info": {
+    "displayName": "Header Entry"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "sectionKey": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string"
+    },
+    "subEntries": {
+      "type": "component",
+      "component": "shared.sub-header-entry",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

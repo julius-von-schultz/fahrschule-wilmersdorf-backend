@@ -15,6 +15,20 @@ export interface SharedButton extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedHeaderEntry extends Struct.ComponentSchema {
+  collectionName: 'components_shared_header_entries';
+  info: {
+    displayName: 'Header Entry';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    link: Schema.Attribute.String & Schema.Attribute.Required;
+    sectionKey: Schema.Attribute.String;
+    subEntries: Schema.Attribute.Component<'shared.sub-header-entry', true>;
+  };
+}
+
 export interface SharedHomeStage extends Struct.ComponentSchema {
   collectionName: 'components_shared_home_stages';
   info: {
@@ -24,6 +38,16 @@ export interface SharedHomeStage extends Struct.ComponentSchema {
     buttons: Schema.Attribute.Component<'shared.button', true>;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     text: Schema.Attribute.Blocks;
+  };
+}
+
+export interface SharedMainNavigation extends Struct.ComponentSchema {
+  collectionName: 'components_shared_main_navigations';
+  info: {
+    displayName: 'MainNavigation';
+  };
+  attributes: {
+    navigationEntries: Schema.Attribute.Component<'shared.header-entry', true>;
   };
 }
 
@@ -92,7 +116,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 export interface SharedSubHeaderEntry extends Struct.ComponentSchema {
   collectionName: 'components_shared_sub_header_entries';
   info: {
-    displayName: 'subHeaderEntry';
+    displayName: 'Sub Header Entry';
   };
   attributes: {
     description: Schema.Attribute.String;
@@ -105,7 +129,9 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.button': SharedButton;
+      'shared.header-entry': SharedHeaderEntry;
       'shared.home-stage': SharedHomeStage;
+      'shared.main-navigation': SharedMainNavigation;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
