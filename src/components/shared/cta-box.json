@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_cta_boxes",
+  "info": {
+    "displayName": "CTA Box"
+  },
+  "options": {},
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "button": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

@@ -9,6 +9,11 @@
       "type": "component",
       "component": "shared.header-entry",
       "repeatable": true
+    },
+    "ctaBox": {
+      "type": "component",
+      "component": "shared.cta-box",
+      "repeatable": false
     }
   },
   "config": {}

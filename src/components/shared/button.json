@@ -22,6 +22,14 @@
         "outline",
         "plain"
       ]
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ]
     }
   },
   "config": {}

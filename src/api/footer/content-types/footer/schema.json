@@ -9,6 +9,21 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
-  "attributes": {}
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "linkLists": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.footer-link-list",
+      "repeatable": true
+    }
+  }
 }

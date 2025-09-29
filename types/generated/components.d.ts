@@ -9,9 +9,33 @@ export interface SharedButton extends Struct.ComponentSchema {
     icon: Schema.Attribute.String;
     label: Schema.Attribute.String;
     link: Schema.Attribute.String;
+    size: Schema.Attribute.Enumeration<['small', 'medium', 'large']>;
     variant: Schema.Attribute.Enumeration<
       ['primary', 'secondary', 'outline', 'plain']
     >;
+  };
+}
+
+export interface SharedCtaBox extends Struct.ComponentSchema {
+  collectionName: 'components_shared_cta_boxes';
+  info: {
+    displayName: 'CTA Box';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'shared.button', false>;
+    description: Schema.Attribute.Text;
+    headline: Schema.Attribute.String;
+  };
+}
+
+export interface SharedFooterLinkList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_footer_link_lists';
+  info: {
+    displayName: 'Footer Link List';
+  };
+  attributes: {
+    headline: Schema.Attribute.String;
+    links: Schema.Attribute.Component<'shared.link', true>;
   };
 }
 
@@ -41,12 +65,25 @@ export interface SharedHomeStage extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedLink extends Struct.ComponentSchema {
+  collectionName: 'components_shared_links';
+  info: {
+    displayName: 'Link';
+    icon: 'link';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    link: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMainNavigation extends Struct.ComponentSchema {
   collectionName: 'components_shared_main_navigations';
   info: {
     displayName: 'MainNavigation';
   };
   attributes: {
+    ctaBox: Schema.Attribute.Component<'shared.cta-box', false>;
     navigationEntries: Schema.Attribute.Component<'shared.header-entry', true>;
   };
 }
@@ -129,8 +166,11 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.button': SharedButton;
+      'shared.cta-box': SharedCtaBox;
+      'shared.footer-link-list': SharedFooterLinkList;
       'shared.header-entry': SharedHeaderEntry;
       'shared.home-stage': SharedHomeStage;
+      'shared.link': SharedLink;
       'shared.main-navigation': SharedMainNavigation;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
